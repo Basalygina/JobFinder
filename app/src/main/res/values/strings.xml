@@ -4,7 +4,7 @@
     <!--Основное меню -->
     <string name="menu_search">Поиск</string>
     <string name="menu_favorite">Избранное</string>
-    <string name="menu_responses">Отклики</string>
+    <string name="menu_applications">Отклики</string>
     <string name="menu_messages">Сообщения</string>
     <string name="menu_profile">Профиль</string>
 
@@ -38,5 +38,8 @@
         <item quantity="many">%d вакансий</item>
         <item quantity="other">%d вакансий</item>
     </plurals>
+
+    <!--Остальные экраны -->
+    <string name="screen_placeholder">"Раздел %s находится в разработке</string>
 
 </resources>
