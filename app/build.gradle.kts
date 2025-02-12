@@ -62,6 +62,8 @@ dependencies {
     implementation(libs.kotlin.dsl)
     implementation(libs.kotlin.dsl.viewbinding)
     annotationProcessor(libs.glide.compiler)
+    implementation(libs.retrofit2)
+    implementation(libs.converter.gson)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

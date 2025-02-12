@@ -39,6 +39,8 @@ room = "androidx.room:room-ktx:2.6.1"
 room-runtime = "androidx.room:room-runtime:2.6.1"
 room-compiler = "androidx.room:room-compiler:2.6.1"
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+retrofit2 = "com.squareup.retrofit2:retrofit:2.9.0"
+converter-gson = "com.squareup.retrofit2:converter-gson:2.9.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
