@@ -44,7 +44,7 @@ fun OfferDto.toDomain(): Offer {
         id = id ?: "",
         title = title,
         link = link,
-        button = button
+        button = button?.text ?: ""
     )
 }
 

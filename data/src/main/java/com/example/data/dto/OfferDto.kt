@@ -1,8 +1,8 @@
 package com.example.data.dto
 
 data class OfferDto(
-    val id: String? = null,
+    val id: String?,
     val title: String,
     val link: String,
-    val button: String? = null
+    val button: ButtonDto?
 )
