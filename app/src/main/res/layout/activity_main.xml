@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="@color/black"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
@@ -36,14 +36,14 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:color="@color/white"
+        app:backgroundTint="?attr/colorPrimary"
         app:itemActiveIndicatorStyle="@color/white"
         app:itemIconTint="@color/bottom_navigation_color_selector"
+        app:itemPaddingTop="@dimen/size_4dp"
         app:itemTextColor="@color/bottom_navigation_color_selector"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:itemPaddingTop="@dimen/size_4dp"
-        app:labelVisibilityMode="labeled"
-        app:backgroundTint="?attr/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line"
         app:menu="@menu/bottom_navigation_menu" />
