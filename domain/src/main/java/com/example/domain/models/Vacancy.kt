@@ -1,7 +1,9 @@
 package com.example.domain.models
 
-import java.io.Serializable
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Vacancy(
     val id: String,
     val lookingNumber: Int? = null,
@@ -17,4 +19,4 @@ data class Vacancy(
     val description: String? = null,
     val responsibilities: String? = null,
     val questions: List<String>? = null
-): Serializable
+): Parcelable
