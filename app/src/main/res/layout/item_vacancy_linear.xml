@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/grey_2"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/size_16dp">
+
+        <ImageView
+            android:id="@+id/icon_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_favorite_not_active"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/currently_watching"
+            style="@style/RegularTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingBottom="@dimen/size_10dp"
+            android:textColor="@color/green"
+            android:visibility="visible"
+            app:layout_goneMarginTop="0dp"
+            app:layout_goneMarginBottom="0dp"
+            app:layout_constraintBottom_toTopOf="@id/vacancy_title"
+            app:layout_constraintStart_toStartOf="@id/vacancy_title"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Сейчас просматривает 1 человек" />
+
+        <TextView
+            android:id="@+id/vacancy_title"
+            style="@style/RegularTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/currently_watching"
+            tools:text="UI/UX Designer" />
+
+        <TextView
+            android:id="@+id/salary_range"
+            style="@style/HeaderTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vacancy_title"
+            tools:text="2500-5000 Br" />
+
+        <TextView
+            android:id="@+id/town"
+            style="@style/RegularTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/salary_range"
+            tools:text="Минск" />
+
+        <TextView
+            android:id="@+id/company"
+            style="@style/RegularTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_4dp"
+            android:drawableEnd="@drawable/ic_check_mark"
+            android:drawablePadding="@dimen/size_8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/town"
+            tools:text="Мобирикс" />
+
+        <TextView
+            android:id="@+id/experience"
+            style="@style/RegularTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_10dp"
+            android:drawableStart="@drawable/ic_experience"
+            android:drawablePadding="@dimen/size_8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/company"
+            tools:text="Опыт от 1 года до 3 лет" />
+
+        <TextView
+            android:id="@+id/published_date"
+            style="@style/MutedTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/experience"
+            tools:text="Опубликовано 20 февраля" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_apply"
+            style="@style/RegularTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rectangle_rounded_50_green"
+            android:text="@string/apply"
+            android:textAllCaps="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/published_date" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

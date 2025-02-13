@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/size_16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/size_16dp" />
+
+    <FrameLayout
+        android:id="@+id/search_view"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginVertical="@dimen/size_16dp"
+        android:layout_marginEnd="48dp"
+        android:background="@drawable/rectangle_rounded_8_grey"
+        android:elevation="8dp"
+        android:paddingVertical="@dimen/size_0dp"
+        app:layout_constraintEnd_toEndOf="@id/end_guideline"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/et_search"
+            style="@style/RegularTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:background="@null"
+            android:drawableStart="@drawable/ic_menu_search"
+            android:drawablePadding="@dimen/size_8dp"
+            android:hint="@string/search_hint_compact_mode"
+            android:inputType="text"
+            android:paddingHorizontal="@dimen/size_8dp"
+            android:paddingVertical="@dimen/size_8dp"
+            android:singleLine="true"
+            android:textColorHint="@color/grey_3" />
+
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/filter_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/rectangle_rounded_8_grey"
+        android:paddingHorizontal="@dimen/size_8dp"
+        android:src="@drawable/ic_filter"
+        app:layout_constraintEnd_toEndOf="@id/end_guideline"
+        app:layout_constraintTop_toTopOf="@id/search_view" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_offers"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_16dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="@id/end_guideline"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@id/search_view"
+        tools:listitem="@layout/item_offer_linear" />
+
+    <TextView
+        android:id="@+id/tv_jobs_for_you"
+        style="@style/HeaderTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_32dp"
+        android:text="@string/jobs_for_you"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/rv_offers" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_vacancies"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/size_16dp"
+        android:layout_marginBottom="@dimen/size_12dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/btn_show_more_vacancies"
+        app:layout_constraintEnd_toEndOf="@id/end_guideline"
+        app:layout_constraintStart_toStartOf="@+id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/tv_jobs_for_you"
+        tools:listitem="@layout/item_vacancy_linear" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_show_more_vacancies"
+        style="@style/RegularTextStyle"
+        android:layout_width="@dimen/size_0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/size_12dp"
+        android:layout_marginBottom="@dimen/size_8dp"
+        android:background="@drawable/rectangle_rounded_8_blue"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/end_guideline"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@id/rv_vacancies"
+        tools:text="Еще 143 вакансии" />
+
+    <TextView
+        android:id="@+id/tv_total_count"
+        style="@style/RegularTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_16dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/search_view"
+        tools:text="145 вакансий" />
+
+    <TextView
+        android:id="@+id/tv_sort_order"
+        style="@style/RegularTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_16dp"
+        android:drawableEnd="@drawable/ic_sort"
+        android:drawablePadding="@dimen/size_6dp"
+        android:text="@string/by_relevance"
+        android:textColor="@color/blue"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/end_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/search_view" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/size_32dp"
+        android:indeterminateTint="@color/blue"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_error_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/size_32dp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/size_16sp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

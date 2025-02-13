@@ -4,17 +4,18 @@
     <!--Основное меню -->
     <string name="menu_search">Поиск</string>
     <string name="menu_favorite">Избранное</string>
-    <string name="menu_responses">Отклики</string>
+    <string name="menu_applications">Отклики</string>
     <string name="menu_messages">Сообщения</string>
     <string name="menu_profile">Профиль</string>
 
     <!--Экран поиска -->
-    <string name="search_hint">Должность, ключевые слова</string>
+    <string name="search_hint_full_content_mode">Должность по подходящим вакансиям</string>
+    <string name="search_hint_compact_mode">Должность, ключевые слова</string>
     <string name="jobs_for_you">Вакансии для вас</string>
     <string name="apply">Откликнуться</string>
     <string name="by_relevance">По соответствию</string>
 
-    <plurals name="more_vacancies">
+    <plurals name="show_more_vacancies">
         <item quantity="one">Еще %d вакансия</item>
         <item quantity="few">Еще %d вакансии</item>
         <item quantity="many">Еще %d вакансий</item>
@@ -22,7 +23,7 @@
     </plurals>
 
     <!--Карточка вакансии -->
-    <string name="published_date">Опубликовано %1$d %2$s</string>
+    <string name="published_date">Опубликовано %s</string>
 
     <plurals name="currently_watching">
         <item quantity="one">Сейчас просматривает %d человек</item>
@@ -38,5 +39,8 @@
         <item quantity="many">%d вакансий</item>
         <item quantity="other">%d вакансий</item>
     </plurals>
+
+    <!--Остальные экраны -->
+    <string name="screen_placeholder">"Раздел %s находится в разработке</string>
 
 </resources>
