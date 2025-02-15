@@ -39,6 +39,8 @@
         <item quantity="many">%d вакансий</item>
         <item quantity="other">%d вакансий</item>
     </plurals>
+    <string name="database_error">Ошибка при доступе к базе данных</string>
+    <string name="database_empty">В избранном нет вакансии</string>
 
     <!--Остальные экраны -->
     <string name="screen_placeholder">"Раздел %s находится в разработке</string>
