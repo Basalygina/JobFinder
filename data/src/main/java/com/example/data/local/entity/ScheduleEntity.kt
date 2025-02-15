@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "schedules")
 data class ScheduleEntity(
-    @PrimaryKey(autoGenerate = true)
-    val scheduleId: Int = 0,
+    @PrimaryKey
+    val scheduleId: Int, // name.hashCode()
     val name: String
 )

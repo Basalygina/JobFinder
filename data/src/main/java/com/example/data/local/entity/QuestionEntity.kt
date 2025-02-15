@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "questions")
 data class QuestionEntity(
-    @PrimaryKey(autoGenerate = true)
-    val questionId: Int = 0,
+    @PrimaryKey
+    val questionId: Int, // text.hashCode()
     val text: String
 )

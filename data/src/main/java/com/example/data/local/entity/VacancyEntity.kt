@@ -23,7 +23,7 @@ data class VacancyEntity(
     val id: String,
     val lookingNumber: Int? = null,
     val title: String,
-    val experienceId: Int,
+    val experienceId: Int?,
     val company: String,
     val publishedDate: String,
     val isFavorite: Boolean,
