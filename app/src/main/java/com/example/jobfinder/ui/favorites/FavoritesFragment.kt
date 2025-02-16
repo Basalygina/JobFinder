@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.Vacancy
 import com.example.jobfinder.R
@@ -108,7 +109,9 @@ class FavoritesFragment : Fragment() {
     }
 
     private fun selectVacancy(vacancy: Vacancy) {
-        //TODO
+        val action =
+            FavoritesFragmentDirections.actionFavoritesFragmentToVacancyDetailsFragment(vacancy)
+        findNavController().navigate(action)
     }
 
     private fun onFavoriteClick(vacancy: Vacancy) {

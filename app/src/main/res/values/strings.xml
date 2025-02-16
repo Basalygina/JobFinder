@@ -42,7 +42,27 @@
     <string name="database_error">Ошибка при доступе к базе данных</string>
     <string name="database_empty">В избранном нет вакансии</string>
 
+    <!--Экран с деталями вакансии -->
+    <string name="responsibilities_title">Ваши задачи</string>
+    <string name="ask_a_question">Задайте вопрос работодателю</string>
+    <string name="ask_question_hint">Он получит его с откликом на вакансию</string>
+
+    <plurals name="currently_watching_details">
+        <item quantity="one">%d человек сейчас смотрит</item>
+        <item quantity="few">%d человека сейчас смотрят</item>
+        <item quantity="other">%d человек сейчас смотрят</item>
+    </plurals>
+    <string name="currently_watching_zero">Сейчас никто не смотрит</string>
+
+    <plurals name="applied_number_details">
+        <item quantity="one">%d человек уже откликнулся</item>
+        <item quantity="few">%d человека уже откликнулись</item>
+        <item quantity="other">%d человек уже откликнулись</item>
+    </plurals>
+    <string name="applied_number_zero">Пока никто не откликнулся</string>
+
     <!--Остальные экраны -->
-    <string name="screen_placeholder">"Раздел %s находится в разработке</string>
+    <string name="screen_placeholder">Раздел %s находится в разработке</string>
+
 
 </resources>

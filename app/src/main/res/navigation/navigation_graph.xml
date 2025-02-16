@@ -13,7 +13,12 @@
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.jobfinder.ui.favorites.FavoritesFragment"
-        android:label="FavoritesFragment" />
+        tools:layout="@layout/fragment_favorites"
+        android:label="FavoritesFragment" >
+        <action
+            android:id="@+id/action_favoritesFragment_to_vacancyDetailsFragment"
+            app:destination="@id/vacancyDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/messagesFragment"
         android:name="com.example.jobfinder.ui.messages.MessagesFragment"
@@ -27,5 +32,19 @@
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.jobfinder.ui.search.SearchFragment"
-        android:label="SearchFragment" />
+        tools:layout="@layout/fragment_search"
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_vacancyDetailsFragment"
+            app:destination="@id/vacancyDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vacancyDetailsFragment"
+        android:name="com.example.jobfinder.ui.vacancydetails.VacancyDetailsFragment"
+        tools:layout="@layout/fragment_vacancy_details"
+        android:label="VacancyDetailsFragment" >
+        <argument
+            android:name="vacancy"
+            app:argType="com.example.domain.models.Vacancy" />
+    </fragment>
 </navigation>

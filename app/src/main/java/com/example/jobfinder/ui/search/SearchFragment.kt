@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.Offer
@@ -219,7 +220,8 @@ class SearchFragment : Fragment() {
     }
 
     private fun selectVacancy(vacancy: Vacancy) {
-        //TODO
+        val action = SearchFragmentDirections.actionSearchFragmentToVacancyDetailsFragment(vacancy)
+        findNavController().navigate(action)
     }
 
     private fun selectOffer(offer: Offer) {

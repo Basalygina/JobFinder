@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/back_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/size_16dp"
+            android:layout_marginStart="@dimen/size_16dp"
+            android:src="@drawable/ic_arrow_back" />
+
+        <TextView
+            android:id="@+id/header_vacancy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_16dp"
+            android:layout_weight="10" />
+
+        <ImageView
+            android:id="@+id/ic_eye"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_4dp"
+            android:layout_marginTop="@dimen/size_16dp"
+            android:layout_marginEnd="@dimen/size_16dp"
+            android:src="@drawable/ic_eye" />
+
+        <ImageView
+            android:id="@+id/ic_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_4dp"
+            android:layout_marginTop="@dimen/size_16dp"
+            android:layout_marginEnd="@dimen/size_16dp"
+            android:src="@drawable/ic_share" />
+
+        <ImageView
+            android:id="@+id/ic_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_16dp"
+            android:layout_marginEnd="@dimen/size_16dp"
+            android:src="@drawable/ic_favorite_bold_outlined"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/size_50dp"
+        android:visibility="visible">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/start_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/size_16dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/end_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/size_16dp" />
+
+            <TextView
+                android:id="@+id/vacancy_title"
+                style="@style/HeaderTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/size_8dp"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:textSize="22sp"
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="UI/UX Designer" />
+
+            <TextView
+                android:id="@+id/salary_range"
+                style="@style/RegularTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/size_8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                app:layout_constraintTop_toBottomOf="@id/vacancy_title"
+                tools:text="Уровень дохода не указан" />
+
+
+            <TextView
+                android:id="@+id/experience"
+                style="@style/RegularTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/size_6dp"
+                android:drawablePadding="@dimen/size_8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                app:layout_constraintTop_toBottomOf="@+id/salary_range"
+                tools:text="Опыт от 1 года до 3 лет" />
+
+            <TextView
+                android:id="@+id/schedules"
+                style="@style/RegularTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/size_12dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                app:layout_constraintTop_toBottomOf="@+id/experience"
+                tools:text="Полная занятость, полный день" />
+
+            <LinearLayout
+                android:id="@+id/applied_watching_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_12dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline"
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                app:layout_constraintTop_toBottomOf="@+id/schedules">
+
+                <TextView
+                    android:id="@+id/applied_number"
+                    style="@style/RegularTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="@dimen/size_4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rectangle_rounded_8_dark_green"
+                    android:drawableEnd="@drawable/ic_person_green"
+                    android:paddingHorizontal="@dimen/size_8dp"
+                    android:paddingVertical="@dimen/size_4dp"
+                    android:visibility="visible"
+                    tools:text="147 человек уже откликнулись" />
+
+                <TextView
+                    android:id="@+id/currently_watching"
+                    style="@style/RegularTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="@dimen/size_4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rectangle_rounded_8_dark_green"
+                    android:drawableEnd="@drawable/ic_eye_green"
+                    android:paddingHorizontal="@dimen/size_8dp"
+                    android:paddingVertical="@dimen/size_4dp"
+                    android:visibility="visible"
+                    tools:text="2 человека сейчас смотрят" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/company_address_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/rectangle_rounded_8_grey"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline"
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                app:layout_constraintTop_toBottomOf="@+id/applied_watching_container">
+
+                <TextView
+                    android:id="@+id/company"
+                    style="@style/RegularTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_check_mark"
+                    android:drawablePadding="@dimen/size_8dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingHorizontal="@dimen/size_16dp"
+                    android:paddingTop="@dimen/size_8dp"
+                    android:textSize="@dimen/size_16sp"
+                    tools:text="Мобирикс" />
+
+                <TextView
+                    android:id="@+id/address"
+                    style="@style/RegularTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_10dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingHorizontal="@dimen/size_16dp"
+                    android:paddingBottom="@dimen/size_8dp"
+                    tools:text="Минск, улица Бирюзова, 4/5" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/description"
+                style="@style/RegularTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16dp"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline"
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                app:layout_constraintTop_toBottomOf="@+id/company_address_container"
+                tools:text="MOBYRIX - динамично развивающаяся продуктовая IT-компания" />
+
+            <TextView
+                android:id="@+id/responsibilities_title"
+                style="@style/HeaderTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16dp"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="@string/responsibilities_title"
+                android:textSize="22sp"
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                app:layout_constraintTop_toBottomOf="@id/description" />
+
+            <TextView
+                android:id="@+id/responsibilities"
+                style="@style/RegularTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_8dp"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline"
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                app:layout_constraintTop_toBottomOf="@+id/responsibilities_title"
+                tools:text="-Проектировать пользовательский опыт, проводить UX исследования;" />
+
+            <TextView
+                android:id="@+id/ask_question_label"
+                style="@style/RegularTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/ask_a_question"
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                app:layout_constraintTop_toBottomOf="@+id/responsibilities" />
+
+            <TextView
+                android:id="@+id/ask_question_hint"
+                style="@style/MutedTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_8dp"
+                android:text="@string/ask_question_hint"
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                app:layout_constraintTop_toBottomOf="@+id/ask_question_label" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/questions_flow"
+                android:layout_width="@dimen/size_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16dp"
+                android:paddingEnd="@dimen/size_16dp"
+                app:flow_maxElementsWrap="1"
+                app:flow_verticalGap="@dimen/size_8dp"
+                app:flow_horizontalAlign="start"
+                app:flow_horizontalBias="0"
+                app:flow_wrapMode="chain"
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline"
+                app:layout_constraintTop_toBottomOf="@id/ask_question_hint" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_apply"
+                style="@style/RegularTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="@dimen/size_12dp"
+                android:background="@drawable/rectangle_rounded_8_green"
+                android:text="@string/apply"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline"
+                app:layout_constraintStart_toStartOf="@id/start_guideline"
+                app:layout_constraintTop_toBottomOf="@+id/questions_flow" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>
+
+
