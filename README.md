@@ -24,14 +24,8 @@
 
 ### Скриншоты:
 
-- **Поиск вакансий**  
-  ![Поиск вакансий](domain/src/main/assets/screen_search.jpg)
-
-- **Избранное**  
-  ![Избранное](domain/src/main/assets/screen_favorites.jpg)
-
-- **Просмотр деталей вакансии**  
-  ![Детали вакансии](domain/src/main/assets/screen_details.jpg)
+- **Поиск вакансий, Избранное, Просмотр деталей вакансии**  
+  ![Поиск вакансий](domain/src/main/assets/app_screenshots.png)
 
 ## Допущения
 
