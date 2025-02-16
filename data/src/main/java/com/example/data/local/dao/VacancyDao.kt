@@ -41,7 +41,9 @@ interface VacancyDao {
     @Transaction
     suspend fun addFavoriteVacancy(vacancy: com.example.domain.models.Vacancy) {
         val expEntity = vacancy.experience.toEntity()
+        // Проверяем, существует ли уже такая сущность опыта в БД
         val existingExp = getExperienceById(expEntity.experienceId)
+        // Если такой сущности нет, сохраняем новый опыт в БД
         val finalExperienceId = existingExp?.experienceId ?: insertExperience(expEntity).toInt()
 
         val favoriteDetails = vacancy.toFavoriteDetails(finalExperienceId)

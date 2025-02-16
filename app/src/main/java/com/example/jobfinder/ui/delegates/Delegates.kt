@@ -13,6 +13,7 @@ import com.example.jobfinder.databinding.ItemVacancyLinearBinding
 import com.example.jobfinder.utils.DateUtils
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
+// Делегат для отображения элементов вакансий
 fun vacancyAdapterDelegate(
     onFavoriteClick: (Vacancy) -> Unit,
     onItemClick: (Vacancy) -> Unit
@@ -49,6 +50,7 @@ fun vacancyAdapterDelegate(
                 else R.drawable.ic_favorite_not_active
             iconFavorite.setImageResource(favoriteIconRes)
 
+            // Настройки отступов в зависимости от наличия информации о просмотрах
             val constraintSet = ConstraintSet()
             constraintSet.clone(binding.rootLayout)
             if (binding.currentlyWatching.visibility == View.GONE) {
@@ -67,6 +69,7 @@ fun vacancyAdapterDelegate(
     }
 }
 
+// Делегат для отображения элементов из блока рекомендаций
 fun offerAdapterDelegate(
     onOfferClick: (Offer) -> Unit
 ) = adapterDelegateViewBinding<Offer, Offer, ItemOfferLinearBinding>(

@@ -12,13 +12,13 @@ import androidx.room.Index
             entity = VacancyEntity::class,
             parentColumns = ["id"],
             childColumns = ["vacancyId"],
-            onDelete = ForeignKey.CASCADE
+            onDelete = ForeignKey.CASCADE // При удалении вакансии удаляются и связанные графики работы
         ),
         ForeignKey(
             entity = ScheduleEntity::class,
             parentColumns = ["scheduleId"],
             childColumns = ["scheduleId"],
-            onDelete = ForeignKey.CASCADE
+            onDelete = ForeignKey.CASCADE // При удалении графика работы удаляются все связи с вакансиями
         )
     ],
     indices = [Index("vacancyId"), Index("scheduleId")]

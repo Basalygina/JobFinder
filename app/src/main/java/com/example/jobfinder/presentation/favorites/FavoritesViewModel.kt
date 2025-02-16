@@ -19,6 +19,7 @@ class FavoritesViewModel(
     val favoritesCount: StateFlow<Int> = _favoritesCount
 
     init {
+        // Загрузка избранного из локальной БД
         viewModelScope.launch {
             favoritesInteractor.getFavorites().collect { favs ->
                 _state.value = when {

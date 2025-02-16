@@ -13,7 +13,7 @@ import androidx.room.PrimaryKey
             entity = ExperienceEntity::class,
             parentColumns = ["experienceId"],
             childColumns = ["experienceId"],
-            onDelete = ForeignKey.SET_NULL
+            onDelete = ForeignKey.SET_NULL // При удалении опыта работы устанавливаем NULL
         )
     ],
     indices = [Index(value = ["experienceId"])]
