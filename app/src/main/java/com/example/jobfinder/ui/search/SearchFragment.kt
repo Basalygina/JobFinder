@@ -1,17 +1,15 @@
 package com.example.jobfinder.ui.search
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.Offer
@@ -29,15 +27,38 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class SearchFragment : Fragment() {
     private val viewModel: SearchViewModel by viewModel()
 
-    private val binding by lazy { FragmentSearchBinding.inflate(layoutInflater) }
-    private val vacancyAdapter by lazy { VacancyAdapter() { selectVacancy(it) } }
+    private var _binding: FragmentSearchBinding? = null
+    private val binding get() = _binding!!
+    private val vacancyAdapter by lazy {
+        VacancyAdapter(
+            onFavoriteClick = ::onFavoriteClick,
+            onItemClick = ::selectVacancy
+        )
+    }
     private val offersAdapter by lazy { OffersAdapter() { selectOffer(it) } }
 
     private var currentFullContent = false
+    private var isShowMoreButtonVisible = false
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View = binding.root
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
+        with(binding) {
+            rvVacancies.adapter = vacancyAdapter
+            rvOffers.adapter = offersAdapter
+            rvOffers.addItemDecoration(
+                SpaceItemDecoration(
+                    8.dpToPx(requireContext()),
+                    RecyclerView.HORIZONTAL
+                )
+            )
+        }
+        return binding.root
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -64,10 +85,12 @@ class SearchFragment : Fragment() {
                     val layoutManager = recyclerView.layoutManager as? LinearLayoutManager ?: return
                     val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
 
-                    if (!currentFullContent && lastVisibleItemPosition >= 2) {
-                        binding.btnShowMoreVacancies.visibility = View.VISIBLE
-                    } else {
-                        binding.btnShowMoreVacancies.visibility = View.GONE
+                    val shouldBeVisible = !currentFullContent && lastVisibleItemPosition >= 2
+
+                    if (shouldBeVisible != isShowMoreButtonVisible) {
+                        isShowMoreButtonVisible = shouldBeVisible
+                        binding.btnShowMoreVacancies.visibility =
+                            if (shouldBeVisible) View.VISIBLE else View.GONE
                     }
                 }
             })
@@ -82,22 +105,6 @@ class SearchFragment : Fragment() {
                     etSearch.clearFocus()
                 }
             }
-
-            rvVacancies.adapter = vacancyAdapter
-            rvVacancies.addItemDecoration(
-                SpaceItemDecoration(
-                    16.dpToPx(requireContext()),
-                    RecyclerView.VERTICAL
-                )
-            )
-
-            rvOffers.adapter = offersAdapter
-            rvOffers.addItemDecoration(
-                SpaceItemDecoration(
-                    8.dpToPx(requireContext()),
-                    RecyclerView.HORIZONTAL
-                )
-            )
         }
     }
 
@@ -118,7 +125,6 @@ class SearchFragment : Fragment() {
     }
 
     private fun showContent(vacancies: List<Vacancy>, fullContent: Boolean, offers: List<Offer>?) {
-        Log.d("DTest", "!!showContent, fullContent = $fullContent")
         with(binding) {
             progressBar.visibility = View.GONE
             tvErrorMessage.visibility = View.GONE
@@ -130,6 +136,15 @@ class SearchFragment : Fragment() {
             if (fullContent) showFullContent(vacancies) else showCompactContent(vacancies, offers)
 
             vacancyAdapter.submitList(vacancies, fullContent)
+            while (rvVacancies.itemDecorationCount > 0) {
+                rvVacancies.removeItemDecorationAt(0)
+            }
+            rvVacancies.addItemDecoration(
+                SpaceItemDecoration(
+                    (if (currentFullContent) 8 else 16).dpToPx(requireContext()),
+                    RecyclerView.VERTICAL
+                )
+            )
         }
     }
 
@@ -205,8 +220,8 @@ class SearchFragment : Fragment() {
     }
 
     private fun selectVacancy(vacancy: Vacancy) {
-        Log.d("DTest", "selectVacancy")
-
+        val action = SearchFragmentDirections.actionSearchFragmentToVacancyDetailsFragment(vacancy)
+        findNavController().navigate(action)
     }
 
     private fun selectOffer(offer: Offer) {
@@ -214,4 +229,19 @@ class SearchFragment : Fragment() {
         context?.startActivity(intent)
     }
 
+    private fun onFavoriteClick(vacancy: Vacancy) {
+        viewModel.toggleFavorite(vacancy)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.refreshFavorites()
+        binding.btnShowMoreVacancies.visibility =
+            if (isShowMoreButtonVisible) View.VISIBLE else View.GONE
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

@@ -3,8 +3,7 @@ package com.example.data.repository
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.util.Log
-import com.example.data.mapper.toDomain
+import com.example.data.mappers.toDomain
 import com.example.data.remote.ApiService
 import com.example.domain.api.VacancyRepository
 import com.example.domain.models.Resource

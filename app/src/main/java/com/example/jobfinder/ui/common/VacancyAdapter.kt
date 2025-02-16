@@ -1,39 +1,25 @@
 package com.example.jobfinder.ui.common
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.Vacancy
-import com.example.jobfinder.databinding.ItemVacancyLinearBinding
+import com.example.jobfinder.ui.delegates.vacancyAdapterDelegate
+import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 
 
 class VacancyAdapter(
-    private var vacancies: List<Vacancy> = emptyList(),
-    private var isFullContent: Boolean = false,
-    private val clickListener: VacancyClickListener,
+    private val onFavoriteClick: (Vacancy) -> Unit,
+    private val onItemClick: (Vacancy) -> Unit
+) : AsyncListDifferDelegationAdapter<Vacancy>(VacancyDiffCallback()) {
+    private var isFullContent: Boolean = false
 
-    ) : RecyclerView.Adapter<VacancyViewHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VacancyViewHolder {
-        val binding = ItemVacancyLinearBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return VacancyViewHolder(binding.root)
+    // Адаптер вакансий с поддержкой DiffUtil
+    init {
+        delegatesManager.addDelegate(vacancyAdapterDelegate(onFavoriteClick, onItemClick))
     }
 
-    override fun onBindViewHolder(holder: VacancyViewHolder, position: Int) {
-        val vacancy = vacancies[position]
-        holder.bind(vacancy)
-        holder.itemView.setOnClickListener { clickListener.onVacancyClick(vacancies.get(position)) }
-    }
-
-    override fun getItemCount(): Int = vacancies.size
-
+    // Обновление списка с учетом режима отображения (полный/краткий)
     fun submitList(newVacancies: List<Vacancy>, showAll: Boolean) {
         isFullContent = showAll
-        vacancies = if (showAll) newVacancies else newVacancies.take(3)
-        notifyDataSetChanged()
-    }
-
-    fun interface VacancyClickListener {
-        fun onVacancyClick(vacancy: Vacancy)
+        val displayedList = if (showAll) newVacancies else newVacancies.take(3)
+        items = displayedList
     }
 }

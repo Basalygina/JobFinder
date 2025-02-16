@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tvQuestion"
+    style="@style/RegularTextStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rectangle_rounded_50_grey"
+    android:paddingHorizontal="@dimen/size_12dp"
+    android:paddingVertical="8dp"
+    android:textAlignment="textStart"
+    tools:text="Какой график работы" />

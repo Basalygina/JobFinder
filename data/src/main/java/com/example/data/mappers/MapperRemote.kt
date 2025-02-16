@@ -1,4 +1,4 @@
-package com.example.data.mapper
+package com.example.data.mappers
 
 import com.example.data.dto.AddressDto
 import com.example.data.dto.ExperienceDto

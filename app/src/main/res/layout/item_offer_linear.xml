@@ -30,6 +30,8 @@
             android:layout_marginStart="@dimen/size_8dp"
             android:layout_marginTop="@dimen/size_16dp"
             android:layout_marginEnd="@dimen/size_16dp"
+            android:ellipsize="end"
+            android:maxLines="3"
             tools:text="Поднять резюме в поиске" />
 
         <TextView
@@ -39,6 +41,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/size_8dp"
             android:layout_marginEnd="@dimen/size_8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:textColor="@color/green"
             tools:text="Поднять" />
 
