@@ -25,13 +25,13 @@
 ### Скриншоты:
 
 - **Поиск вакансий**  
-  ![Поиск вакансий](assets/screen_search.png)
+  ![Поиск вакансий](domain/src/main/assets/screen_search.jpg)
 
 - **Избранное**  
-  ![Избранное](assets/screen_favorites.png)
+  ![Избранное](domain/src/main/assets/screen_favorites.jpg)
 
 - **Просмотр деталей вакансии**  
-  ![Детали вакансии](assets/screen_details.png)
+  ![Детали вакансии](domain/src/main/assets/screen_details.jpg)
 
 ## Допущения
 
